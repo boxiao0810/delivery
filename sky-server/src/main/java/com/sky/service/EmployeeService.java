@@ -1,7 +1,10 @@
 package com.sky.service;
 
+import com.sky.dto.EmployeeDTO;
 import com.sky.dto.EmployeeLoginDTO;
 import com.sky.entity.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 public interface EmployeeService {
 
@@ -11,5 +14,7 @@ public interface EmployeeService {
      * @return
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
+    void save(EmployeeDTO employeeDTO);
+
 
 }
