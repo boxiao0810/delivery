@@ -14,6 +14,7 @@ import com.sky.vo.EmployeeLoginVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.ss.formula.functions.T;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -96,6 +97,14 @@ public class EmployeeController {
         log.info("page query", employeePageQueryDTO);
         PageResult result = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(result);
+    }
+
+
+    @PostMapping("/status/{status}")
+    @ApiOperation("Enable or disable employee account")
+    public Result<T> enableOrDisable(@PathVariable("status") Integer status, Long id) {
+        employeeService.enableOrDisable(status, id);
+        return Result.success();
     }
 
 
