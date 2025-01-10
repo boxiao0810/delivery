@@ -125,7 +125,23 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .status(status)
                 .id(id)
                 .build();
-        employeeMapper.updateAccountStatus(employee);
+        employeeMapper.updateAccountInfo(employee);
+    }
+
+    public Employee getById(Integer id){
+        Employee employee = employeeMapper.getById(id);
+        employee.setPassword("****");
+        return employee;
+    }
+
+    public void updateInfo(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        employee.setUpdateUser(BaseContext.getCurrentId());
+        BeanUtils.copyProperties(employeeDTO,employee);
+
+        System.out.println("The current id is: " + employeeDTO.getId());
+        employee.setUpdateTime(LocalDateTime.now());
+        employeeMapper.updateAccountInfo(employee);
     }
 
 

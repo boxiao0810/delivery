@@ -38,5 +38,7 @@ public interface EmployeeMapper {
      * update employee account status
      * @param employee
      */
-    void updateAccountStatus(Employee employee);
+    void updateAccountInfo(Employee employee);
+
+    Employee getById(Integer id);
 }

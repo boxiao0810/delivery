@@ -108,6 +108,26 @@ public class EmployeeController {
     }
 
 
+    /**
+     * Get employee data by id
+     * @param id
+     * @return
+     */
+    @GetMapping("{id}")
+    @ApiOperation("Retrive user data by id")
+    public Result<Employee> getById(@PathVariable Integer id) {
+        Employee employee = employeeService.getById(id);
+        return Result.success(employee);
+    }
+
+    @PutMapping()
+    @ApiOperation("Update the current employee information")
+    public Result<T> updateInfo(@RequestBody EmployeeDTO employeeDTO) {
+        employeeService.updateInfo(employeeDTO);
+        return Result.success();
+    }
+
+
 //    @GetMapping
 //    @ApiOperation()
 
