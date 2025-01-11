@@ -84,7 +84,7 @@ public class EmployeeController {
      */
     @PostMapping
     @ApiOperation(value = "Save employee")
-    public Result save(@RequestBody EmployeeDTO employee){
+    public Result<T> save(@RequestBody EmployeeDTO employee){
         log.info("add new employee: {}", employee);
         System.out.println("The current Controller thread id" + Thread.currentThread().getId());
         employeeService.save(employee);
