@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
     private SetmealMapper setmealMapper;
 
     public void changeCategory(CategoryDTO categoryDTO){
-        Category category = Category.builder().id(categoryDTO.getId()).name(categoryDTO.getName()).sort(categoryDTO.getSort()).updateTime(LocalDateTime.now()).updateUser(BaseContext.getCurrentId()).build();
+        Category category = Category.builder().id(categoryDTO.getId()).name(categoryDTO.getName()).sort(categoryDTO.getSort()).build();
         categoryMapper.changeCategory(category);
     }
 
@@ -50,20 +50,15 @@ public class CategoryServiceImpl implements CategoryService {
     }
     public void enableOrDisable(Integer status, Long id) {
         Category category = Category.builder()
-                        .id(id).status(status).updateTime(LocalDateTime.now()).updateUser(BaseContext.getCurrentId()).build();
+                        .id(id).status(status).build();
         categoryMapper.changeCategoryStatus(category);
     }
 
     public void addCategory(CategoryDTO categoryDTO) {
-        System.out.println(categoryDTO.getName());
-        System.out.println(categoryDTO.getSort());
         Category category = new Category();
         BeanUtils.copyProperties(categoryDTO, category);
         category.setStatus(StatusConstant.ENABLE);
-        category.setCreateTime(LocalDateTime.now());
-        category.setUpdateTime(LocalDateTime.now());
-        category.setCreateUser(BaseContext.getCurrentId());
-        category.setUpdateUser(BaseContext.getCurrentId());
+
         categoryMapper.addCategory(category);
     }
 

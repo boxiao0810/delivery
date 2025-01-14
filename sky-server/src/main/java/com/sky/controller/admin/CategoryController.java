@@ -71,7 +71,7 @@ public class CategoryController {
     @GetMapping("/list")
     @ApiOperation("Query category")
     public Result<List<Category>> queryCategory(@RequestParam Integer type) {
-        System.out.println("type" + type);
+        System.out.println("typessssss" + type);
         List<Category> result = categoryService.queryCategory(type);
         return Result.success(result);
     }
